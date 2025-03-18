@@ -1,0 +1,16 @@
+services:
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    platform: linux/amd64
+    ports:
+      - "5500:5500"
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_SECRET_EXPIRES_IN: ${JWT_SECRET_EXPIRES_IN}
+      PORT: 5500
+      GOOGLE_RECAPTCHA_SECRET_KEY: ${GOOGLE_RECAPTCHA_SECRET_KEY}
+
+    restart: always

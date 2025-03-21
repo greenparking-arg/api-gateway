@@ -9,4 +9,9 @@ export class AuthController {
   login(@Body() loginDto: any) {
     return this.authClient.send({ cmd: 'login' }, loginDto);
   }
+
+  @Post('reset-password')
+  resetPassword(@Body() resetDto: any) {
+    return this.authClient.send({ cmd: 'resetPassword' }, resetDto);
+  }
 }

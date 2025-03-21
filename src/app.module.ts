@@ -3,6 +3,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { CacheModule } from '@nestjs/cache-manager';
 import { GoogleRecaptchaModule } from '@nestlab/google-recaptcha';
 import { PublicController } from './public-services/public.controller'; // Importación del controlador
+import { AuthController } from './auth-services/auth.controller'; // Importación del controlador
 
 @Module({
   imports: [
@@ -27,7 +28,10 @@ import { PublicController } from './public-services/public.controller'; // Impor
       },
     ]),
   ],
-  controllers: [PublicController], // Agregar el controlador aquí
+  controllers: [
+    PublicController,
+    AuthController, 
+  ], // Agregar el controlador aquí
   providers: [],
 })
 export class AppModule {}

@@ -43,4 +43,20 @@ export class AuthService {
     // Devolver el token de acceso
     return { access_token };
   }
+
+  async resetPassword(email: string, nuevaContrasena: string): Promise<void> {
+    const usuario = await this.usuariosRepository.findOne({ where: { email } });
+  
+    if (!usuario) {
+      throw new UnauthorizedException('Usuario no encontrado');
+    }
+  
+    // Hashear la nueva contraseña con bcrypt
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(nuevaContrasena, salt);
+  
+    // Actualizar la contraseña del usuario
+    usuario.password = hashedPassword;
+    await this.usuariosRepository.save(usuario);
+  }
 }

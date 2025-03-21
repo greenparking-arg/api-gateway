@@ -53,10 +53,10 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD_QA }}
           port: 22
           script: |
-            sudo docker pull facilparking/api-gateway:qa
+            docker pull facilparking/api-gateway:qa
             cd /opt/setup-facilparking/api-gateway
-            sudo docker-compose --env-file prod.env down
-            sudo docker-compose --env-file prod.env up -d
+            docker-compose --env-file prod.env down
+            docker-compose --env-file prod.env up -d
 
   deploy-main:
     runs-on: ubuntu-latest
@@ -72,7 +72,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD_PROD }}
           port: 22
           script: |
-            sudo docker pull facilparking/api-gateway:latest
+            docker pull facilparking/api-gateway:latest
             cd /opt/setup-facilparking/api-gateway
-            sudo docker-compose --env-file prod.env down
-            sudo docker-compose --env-file prod.env up -d
+            docker-compose --env-file prod.env down
+            docker-compose --env-file prod.env up -d

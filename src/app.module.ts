@@ -17,11 +17,6 @@ import { AuthController } from './auth-services/auth.controller'; // Importació
     }),
     ClientsModule.register([
       {
-        name: 'AUTH_SERVICE',
-        transport: Transport.TCP,
-        options: { host: 'auth-service', port: 3001 },
-      },
-      {
         name: 'PARKING_SERVICE',
         transport: Transport.TCP,
         options: { host: 'parking-service', port: 3002 },
